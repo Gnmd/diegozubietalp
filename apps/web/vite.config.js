@@ -6,6 +6,12 @@ export default defineConfig({
 	plugins: [react()],
 	build: {
 		emptyOutDir: true,
+		rollupOptions: {
+			input: {
+				main: path.resolve(__dirname, 'index.html'),
+				links: path.resolve(__dirname, 'links/index.html'),
+			},
+		},
 	},
 	server: {
 		port: 3000,

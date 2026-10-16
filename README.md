@@ -28,3 +28,10 @@ O site é publicado como arquivos estáticos em um Worker da Cloudflare (`wrangl
 **Pela linha de comando:** `npx wrangler login` e depois `npm run deploy`.
 
 Cabeçalhos HTTP (cache e segurança) ficam em `apps/web/public/_headers`.
+
+## Páginas
+
+- `/` — site principal (`apps/web/index.html`, `src/App.jsx`).
+- `/links/` — página de links para a bio do Instagram (`apps/web/links/index.html`, `src/pages/LinksPage.jsx`).
+
+O card de compartilhamento (`public/images/og-card.jpg`) é gerado a partir de `apps/web/tools/og-card.html`.
