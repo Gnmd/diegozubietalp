@@ -29,18 +29,18 @@ const Header = () => {
       <div
         className={`mx-auto max-w-6xl rounded-[1.75rem] transition-all duration-500 ${
           light
-            ? 'bg-white/85 shadow-[0_12px_40px_-18px_rgba(12,33,56,0.45)] ring-1 ring-ink/5 backdrop-blur-xl'
-            : 'bg-white/[0.04] ring-1 ring-white/10 backdrop-blur-md'
+            ? 'bg-white/85 shadow-[0_12px_40px_-18px_rgba(12,33,56,0.35)] ring-1 ring-ink/5 backdrop-blur-xl'
+            : 'bg-white/40 ring-1 ring-ink/5 backdrop-blur-md'
         }`}
       >
         <div className="flex items-center justify-between gap-4 py-2.5 pl-4 pr-2.5 md:pl-5">
           <a href="#inicio" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-            <BrainMark className={`h-9 w-9 transition-colors duration-500 ${light ? 'text-ink' : 'text-white'}`} />
+            <BrainMark className="h-9 w-9 text-ink" />
             <span className="leading-tight">
-              <span className={`block font-display text-[1.05rem] font-semibold ${light ? 'text-ink' : 'text-white'}`}>
+              <span className="block font-serif text-[1.1rem] font-semibold text-ink">
                 {SITE.name}
               </span>
-              <span className={`block text-xs ${light ? 'text-slate-500' : 'text-darkblue-100/70'}`}>{SITE.crm}</span>
+              <span className="block text-xs text-slate-500">{SITE.crm}</span>
             </span>
           </a>
 
@@ -50,9 +50,7 @@ const Header = () => {
                 <li key={item.id}>
                   <a
                     href={`#${item.id}`}
-                    className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                      light ? 'text-slate-600 hover:bg-mist hover:text-ink' : 'text-white/80 hover:bg-white/10 hover:text-white'
-                    }`}
+                    className="rounded-full px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-sky-100 hover:text-ink"
                   >
                     {item.label}
                   </a>
@@ -64,7 +62,7 @@ const Header = () => {
           <div className="flex items-center gap-2">
             <WhatsAppLink
               source="header"
-              className={`hidden sm:inline-flex btn py-2.5 text-sm ${light ? 'bg-ink text-white hover:bg-darkblue-900' : 'bg-darkblue-300 text-ink hover:bg-darkblue-200'}`}
+              className="hidden sm:inline-flex btn bg-ink py-2.5 text-sm text-white hover:bg-darkblue-900"
             >
               Agendar consulta
             </WhatsAppLink>
@@ -74,9 +72,7 @@ const Header = () => {
               aria-expanded={open}
               aria-controls="menu-mobile"
               aria-label={open ? 'Fechar menu' : 'Abrir menu'}
-              className={`lg:hidden grid h-11 w-11 place-items-center rounded-full transition-colors ${
-                light ? 'text-ink hover:bg-mist' : 'text-white hover:bg-white/10'
-              }`}
+              className="lg:hidden grid h-11 w-11 place-items-center rounded-full text-ink transition-colors hover:bg-sky-100"
             >
               {open ? <X size={22} /> : <Menu size={22} />}
             </button>
@@ -91,14 +87,14 @@ const Header = () => {
                   <a
                     href={`#${item.id}`}
                     onClick={() => setOpen(false)}
-                    className="block rounded-2xl px-4 py-3 font-display text-lg text-ink hover:bg-mist"
+                    className="block rounded-2xl px-4 py-3 font-serif text-lg text-ink hover:bg-sky-100"
                   >
                     {item.label}
                   </a>
                 </li>
               ))}
             </ul>
-            <WhatsAppLink source="menu" className="btn-dark mt-3 w-full" onClick={() => setOpen(false)}>
+            <WhatsAppLink source="menu" className="btn-primary mt-3 w-full" onClick={() => setOpen(false)}>
               Agendar consulta
             </WhatsAppLink>
           </nav>

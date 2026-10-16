@@ -1,17 +1,13 @@
 import Reveal from '@/components/Reveal';
 
-const SectionHeading = ({ eyebrow, title, intro, dark = false, center = false }) => (
+const SectionHeading = ({ eyebrow, title, intro, center = false }) => (
   <Reveal className={`max-w-2xl ${center ? 'mx-auto text-center' : ''}`}>
-    <p className={`eyebrow ${dark ? 'text-darkblue-300' : ''}`}>
-      <span className={`h-px w-8 ${dark ? 'bg-darkblue-300' : 'bg-darkblue-700'}`} aria-hidden="true" />
+    <p className="eyebrow">
+      <span className="h-px w-8 bg-darkblue-700" aria-hidden="true" />
       {eyebrow}
     </p>
-    <h2 className={`mt-4 text-4xl md:text-5xl font-semibold leading-[1.05] ${dark ? 'text-white' : 'text-ink'}`}>
-      {title}
-    </h2>
-    {intro && (
-      <p className={`mt-5 text-lg leading-relaxed ${dark ? 'text-darkblue-100/80' : 'text-slate-600'}`}>{intro}</p>
-    )}
+    <h2 className="mt-4 text-4xl leading-[1.1] text-ink md:text-5xl">{title}</h2>
+    {intro && <p className="mt-5 text-lg leading-relaxed text-slate-600">{intro}</p>}
   </Reveal>
 );
 

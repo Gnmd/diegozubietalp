@@ -3,14 +3,14 @@ import WhatsAppLink from '@/components/WhatsAppLink';
 import { LOCATIONS, NAV, SITE } from '@/config/site';
 
 const Footer = () => (
-  <footer className="bg-mist pb-24 pt-16 text-slate-600 md:pb-12">
+  <footer className="bg-white pb-24 pt-16 text-slate-600 md:pb-12">
     <div className="container">
       <div className="grid gap-12 md:grid-cols-12">
         <div className="md:col-span-5">
           <div className="flex items-center gap-3">
             <BrainMark className="h-10 w-10 text-ink" title="Logo Dr. Diego Zubieta" />
             <div className="leading-tight">
-              <p className="font-display text-lg font-semibold text-ink">{SITE.name}</p>
+              <p className="font-serif text-lg font-semibold text-ink">{SITE.name}</p>
               <p className="text-sm">{SITE.role}</p>
             </div>
           </div>

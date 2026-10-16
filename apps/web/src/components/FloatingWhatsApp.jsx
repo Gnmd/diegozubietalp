@@ -22,7 +22,7 @@ const FloatingWhatsApp = () => {
       <WhatsAppLink
         source="flutuante"
         tabIndex={visible ? undefined : -1}
-        className="btn w-full bg-ink py-4 text-white shadow-[0_18px_40px_-12px_rgba(12,33,56,0.7)]"
+        className="btn-primary w-full py-4"
       >
         <MessageCircle size={18} aria-hidden="true" />
         Agendar pelo WhatsApp

@@ -9,13 +9,13 @@ module.exports = {
     },
     extend: {
       colors: {
-        // Azul-marinho do logo
+        // Azul-marinho do logo: textos e botões
         ink: {
           DEFAULT: '#0c2138',
           900: '#0c2138',
           950: '#071526',
         },
-        // Paleta original do site (azul petróleo → ciano)
+        // Paleta original do site (azul petróleo → ciano), usada nos detalhes
         darkblue: {
           50: '#e0f2f7',
           100: '#b3e0ed',
@@ -29,26 +29,32 @@ module.exports = {
           900: '#004666',
           950: '#002d40',
         },
-        mist: '#f2f7f9',
+        // Tons pastéis
+        sand: {
+          50: '#fbf8f4',
+          100: '#f5efe7',
+          200: '#ece2d5',
+          300: '#dccdb9',
+        },
+        sky: {
+          50: '#f2f8fb',
+          100: '#e3eff5',
+          200: '#cfe3ee',
+          300: '#b5d4e5',
+        },
       },
       fontFamily: {
         sans: ['"Figtree Variable"', 'system-ui', 'sans-serif'],
-        display: ['"Bricolage Grotesque Variable"', '"Figtree Variable"', 'system-ui', 'sans-serif'],
-        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+        serif: ['"Source Serif 4 Variable"', 'Georgia', 'serif'],
       },
       keyframes: {
         marquee: {
           from: { transform: 'translateX(0)' },
           to: { transform: 'translateX(-50%)' },
         },
-        breathe: {
-          '0%, 100%': { transform: 'scale(1)', opacity: '0.55' },
-          '50%': { transform: 'scale(1.04)', opacity: '0.9' },
-        },
       },
       animation: {
-        marquee: 'marquee 40s linear infinite',
-        breathe: 'breathe 7s ease-in-out infinite',
+        marquee: 'marquee 45s linear infinite',
       },
     },
   },

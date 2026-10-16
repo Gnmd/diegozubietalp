@@ -3,7 +3,7 @@ import Reveal from '@/components/Reveal';
 import { FOTO_SOBRE } from '@/lib/images';
 
 const About = () => (
-  <section id="sobre" className="relative overflow-hidden bg-mist py-24 md:py-32">
+  <section id="sobre" className="relative overflow-hidden bg-white py-24 md:py-32">
     <div className="container grid items-center gap-14 lg:grid-cols-12">
       <Reveal className="relative lg:col-span-5">
         <div className="relative mx-auto max-w-sm lg:max-w-none">
@@ -17,8 +17,8 @@ const About = () => (
               className="h-auto w-full object-cover"
             />
           </div>
-          <div className="absolute -bottom-6 -right-4 grid h-28 w-28 place-items-center rounded-full bg-ink shadow-xl md:-right-8 md:h-32 md:w-32">
-            <BrainMark className="h-14 w-14 text-darkblue-300 md:h-16 md:w-16" />
+          <div className="absolute -bottom-6 -right-4 grid h-28 w-28 place-items-center rounded-full bg-sky-200 shadow-xl ring-8 ring-white md:-right-8 md:h-32 md:w-32">
+            <BrainMark className="h-14 w-14 text-ink md:h-16 md:w-16" />
           </div>
         </div>
       </Reveal>
@@ -29,8 +29,8 @@ const About = () => (
             <span className="h-px w-8 bg-darkblue-700" aria-hidden="true" />
             Sobre
           </p>
-          <h2 className="mt-4 text-4xl font-semibold leading-[1.05] text-ink md:text-5xl">
-            Formado no maior complexo de <span className="accent text-darkblue-600">saúde mental</span> da América Latina.
+          <h2 className="mt-4 text-4xl leading-[1.1] text-ink md:text-5xl">
+            Formado no maior complexo de <span className="accent">saúde mental</span> da América Latina.
           </h2>
         </Reveal>
 

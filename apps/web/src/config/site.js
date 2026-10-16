@@ -125,6 +125,10 @@ export const FAQ = [
     a: `Pelo WhatsApp ${SITE.whatsappDisplay}. É só mandar uma mensagem com o seu nome e a modalidade que prefere.`,
   },
   {
+    q: 'O atendimento é feito por plano de saúde?',
+    a: 'Não. O atendimento é exclusivamente particular, tanto no consultório quanto online.',
+  },
+  {
     q: 'O atendimento online funciona para quem mora longe?',
     a: 'Sim. As consultas online atendem pacientes de todo o Brasil e do exterior.',
   },
