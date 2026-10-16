@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Heart, Shield, Award } from 'lucide-react';
+import { FOTO_PERFIL } from '@/lib/images';
 const Hero = () => {
   const scrollToAgendamento = () => {
     const element = document.getElementById('agendamento');
@@ -69,7 +70,7 @@ const Hero = () => {
         }} className="relative">
             <div className="relative w-full max-w-md mx-auto">
               <div className="absolute inset-0 bg-gradient-to-br from-darkblue-400 to-cyan-400 rounded-3xl blur-2xl opacity-30"></div>
-              <img className="relative rounded-3xl shadow-2xl w-full h-auto object-cover" alt="Dr. Diego Zubieta - Médico Psiquiatra" src="https://horizons-cdn.hostinger.com/b3776de1-03b0-4e95-bce0-e39f3d919431/imagem-do-whatsapp-de-2025-11-06-a-s-21.37.54_bc07db54-Lt3gj.jpg" />
+              <img className="relative rounded-3xl shadow-2xl w-full h-auto object-cover" alt="Dr. Diego Zubieta - Médico residente em psiquiatria" src={FOTO_PERFIL} />
             </div>
           </motion.div>
         </div>

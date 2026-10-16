@@ -1,5 +1,6 @@
 import React from 'react';
 import { MapPin, Phone, Mail } from 'lucide-react';
+import { LOGO } from '@/lib/images';
 const Footer = () => {
   return <footer className="bg-slate-900 text-white py-12 px-4">
       <div className="container mx-auto">
@@ -7,7 +8,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center space-x-3 mb-4">
               <div className="w-12 h-12 flex items-center justify-center">
-                <img src="https://horizons-cdn.hostinger.com/b3776de1-03b0-4e95-bce0-e39f3d919431/68a47b348ad91a19a25bbaea7a5f64aa.png" alt="Logo Dr. Diego Zubieta" className="h-full w-full object-contain" />
+                <img src={LOGO} alt="Logo Dr. Diego Zubieta" className="h-full w-full object-contain" />
               </div>
               <div>
                 <p className="font-bold text-lg">Dr. Diego Zubieta</p>

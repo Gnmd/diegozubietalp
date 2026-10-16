@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { LOGO, LOGO_ROLAGEM } from '@/lib/images';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,9 +36,9 @@ const Header = () => {
           <div className="flex items-center space-x-3">
             <div className="w-12 h-12 flex items-center justify-center">
               {isScrolled ? (
-                <img src="https://horizons-cdn.hostinger.com/b3776de1-03b0-4e95-bce0-e39f3d919431/3727593a4b9df723b767e0ce6432a9ff.png" alt="Logo Dr. Diego Zubieta" className="h-full w-full object-contain" />
+                <img src={LOGO_ROLAGEM} alt="Logo Dr. Diego Zubieta" className="h-full w-full object-contain" />
               ) : (
-                <img src="https://horizons-cdn.hostinger.com/b3776de1-03b0-4e95-bce0-e39f3d919431/68a47b348ad91a19a25bbaea7a5f64aa.png" alt="Logo Dr. Diego Zubieta" className="h-full w-full object-contain" />
+                <img src={LOGO} alt="Logo Dr. Diego Zubieta" className="h-full w-full object-contain" />
               )}
             </div>
             <div>
