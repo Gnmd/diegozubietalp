@@ -1,32 +1,34 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import Header from '@/components/Header';
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import AreasAtuacao from '@/components/AreasAtuacao';
-import Formacao from '@/components/Formacao';
-import Agendamento from '@/components/Agendamento';
-import Footer from '@/components/Footer';
+import FloatingWhatsApp from '@/components/FloatingWhatsApp';
+import About from '@/components/sections/About';
+import Areas from '@/components/sections/Areas';
+import Care from '@/components/sections/Care';
+import Faq from '@/components/sections/Faq';
+import FinalCta from '@/components/sections/FinalCta';
+import Footer from '@/components/sections/Footer';
+import Header from '@/components/sections/Header';
+import Hero from '@/components/sections/Hero';
+import Journey from '@/components/sections/Journey';
+import Pillars from '@/components/sections/Pillars';
 
-function App() {
-  return (
-    <>
-      <Helmet>
-        <title>Dr. Diego Zubieta - Médico Residente em Psiquiatria CRM/SP 246.697</title>
-        <meta name="description" content="Dr. Diego Zubieta, médico (CRM/SP 246.697) residente em psiquiatria pelo Instituto Bairral. Atendimento especializado em saúde mental com ética, empatia e profissionalismo." />
-      </Helmet>
-      
-      <div className="min-h-screen bg-gradient-to-b from-slate-50 to-darkblue-50">
-        <Header />
-        <Hero />
-        <About />
-        <AreasAtuacao />
-        <Formacao />
-        <Agendamento />
-        <Footer />
-      </div>
-    </>
-  );
-}
+const App = () => (
+  <>
+    <a href="#conteudo" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-white focus:px-4 focus:py-2">
+      Pular para o conteúdo
+    </a>
+    <Header />
+    <main id="conteudo">
+      <Hero />
+      <About />
+      <Pillars />
+      <Areas />
+      <Journey />
+      <Care />
+      <Faq />
+      <FinalCta />
+    </main>
+    <Footer />
+    <FloatingWhatsApp />
+  </>
+);
 
 export default App;
