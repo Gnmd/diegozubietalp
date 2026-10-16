@@ -1,4 +1,4 @@
-import { ArrowUpRight, Globe, Mail, MapPin, MessageCircle } from 'lucide-react';
+import { ArrowUpRight, Globe, MapPin, MessageCircle } from 'lucide-react';
 import BrainMark from '@/components/BrainMark';
 import WhatsAppLink from '@/components/WhatsAppLink';
 import { LOCATIONS, SITE } from '@/config/site';
@@ -14,7 +14,6 @@ const LINKS = [
     icon: MapPin,
     external: true,
   },
-  { href: `mailto:${SITE.email}`, label: 'Enviar um e-mail', hint: SITE.email, icon: Mail },
 ];
 
 const LinksPage = () => (
