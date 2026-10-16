@@ -7,7 +7,6 @@ import AreasAtuacao from '@/components/AreasAtuacao';
 import Formacao from '@/components/Formacao';
 import Agendamento from '@/components/Agendamento';
 import Footer from '@/components/Footer';
-import { Toaster } from '@/components/ui/toaster';
 
 function App() {
   return (
@@ -25,7 +24,6 @@ function App() {
         <Formacao />
         <Agendamento />
         <Footer />
-        <Toaster />
       </div>
     </>
   );
