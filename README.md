@@ -14,4 +14,4 @@ npm run build   # gera dist/apps/web
 
 As seções da página ficam em `apps/web/src/components/` (Header, Hero, About, AreasAtuacao, Formacao, Agendamento, Footer) e são montadas em `apps/web/src/App.jsx`.
 
-As URLs das imagens (logo e foto) ficam centralizadas em `apps/web/src/lib/images.js`.
+As imagens (logo e foto) ficam em `apps/web/public/images/` e são referenciadas em `apps/web/src/lib/images.js`.
