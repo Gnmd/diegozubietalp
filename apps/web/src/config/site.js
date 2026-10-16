@@ -79,14 +79,14 @@ export const JOURNEY = [
     text: 'O maior complexo hospitalar de saúde mental da América Latina, referência no manejo de casos graves e complexos.',
   },
   {
-    tag: 'Atuação',
-    title: 'Responsável pelo setor de saúde mental',
+    tag: 'Experiência',
+    title: 'Foi responsável pelo setor de saúde mental',
     place: 'Clínica Vivare · Santo Antônio da Posse/SP',
     text: 'Atendimento acolhedor em saúde mental.',
   },
   {
-    tag: 'Atuação',
-    title: 'Equipe de psiquiatria',
+    tag: 'Experiência',
+    title: 'Integrou a equipe de psiquiatria',
     place: 'Hospital 22 de Outubro · Mogi Mirim/SP',
     text: 'Cuidado hospitalar em saúde mental.',
   },
@@ -101,7 +101,6 @@ export const LOCATIONS = {
   },
   online: {
     reach: 'Para todo o Brasil e o mundo',
-    platform: 'Plataforma MentalMe',
   },
 };
 
@@ -127,7 +126,7 @@ export const FAQ = [
   },
   {
     q: 'O atendimento online funciona para quem mora longe?',
-    a: 'Sim. As consultas online são feitas pela plataforma MentalMe e atendem pacientes de todo o Brasil e do exterior.',
+    a: 'Sim. As consultas online atendem pacientes de todo o Brasil e do exterior.',
   },
   {
     q: 'Onde fica o consultório presencial?',

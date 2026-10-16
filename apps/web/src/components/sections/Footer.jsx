@@ -43,7 +43,7 @@ const Footer = () => (
                 <br />
                 {LOCATIONS.presencial.city}
               </span>
-              <span className="block">Online · {LOCATIONS.online.platform}</span>
+              <span className="block">Online · Brasil e exterior</span>
             </address>
           </div>
           <div>

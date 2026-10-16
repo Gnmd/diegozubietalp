@@ -42,7 +42,6 @@ const Care = () => (
           </span>
           <p className="relative mt-8 text-xs font-semibold uppercase tracking-[0.18em] text-darkblue-300">Online</p>
           <h3 className="relative mt-2 text-3xl font-semibold">{LOCATIONS.online.reach}</h3>
-          <p className="relative mt-3 text-lg text-darkblue-100/80">{LOCATIONS.online.platform}</p>
           <WhatsAppLink source="atendimento_online" className="btn-primary relative mt-8 self-start">
             Agendar consulta online
           </WhatsAppLink>
