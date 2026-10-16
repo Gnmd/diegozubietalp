@@ -2,7 +2,7 @@ import { ArrowDown, Building2, MapPin, Video } from 'lucide-react';
 import BrainMark from '@/components/BrainMark';
 import WhatsAppLink from '@/components/WhatsAppLink';
 import { AREAS, SITE } from '@/config/site';
-import { FOTO_HERO } from '@/lib/images';
+import { FOTO_HERO, FOTO_HERO_MOBILE } from '@/lib/images';
 
 const HIGHLIGHTS = [
   { icon: MapPin, title: 'Presencial', text: 'Piracicaba/SP' },
@@ -37,14 +37,17 @@ const Marquee = () => {
 const Hero = () => (
   <section id="inicio" className="relative overflow-hidden bg-sand-100">
     {/* foto em sangria à direita, dissolvida no fundo bege */}
-    <div className="relative h-[26rem] sm:h-[32rem] lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:w-[50%]">
-      <img
-        src={FOTO_HERO}
-        alt="Dr. Diego Zubieta, médico residente em psiquiatria"
-        width="960"
-        height="1200"
-        className="h-full w-full object-cover object-[50%_22%] [mask-image:linear-gradient(to_bottom,#000_65%,transparent)] lg:[mask-image:linear-gradient(to_right,transparent,#000_32%)]"
-      />
+    <div className="relative h-[26rem] sm:mx-auto sm:h-[34rem] sm:max-w-lg lg:absolute lg:inset-y-0 lg:right-0 lg:mx-0 lg:h-auto lg:w-[50%] lg:max-w-none">
+      <picture>
+        <source media="(max-width: 1023px)" srcSet={FOTO_HERO_MOBILE} width="740" height="880" />
+        <img
+          src={FOTO_HERO}
+          alt="Dr. Diego Zubieta, médico residente em psiquiatria"
+          width="960"
+          height="1200"
+          className="h-full w-full object-cover object-[50%_0%] [mask-image:linear-gradient(to_bottom,#000_65%,transparent)] sm:[mask-image:radial-gradient(50%_60%_at_50%_42%,#000_60%,transparent)] lg:object-[50%_22%] lg:[mask-image:linear-gradient(to_right,transparent,#000_32%)]"
+        />
+      </picture>
     </div>
 
     <div className="container relative -mt-24 pb-14 sm:-mt-28 lg:mt-0 lg:flex lg:min-h-[44rem] lg:items-center lg:pb-16 lg:pt-36">
