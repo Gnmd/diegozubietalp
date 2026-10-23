@@ -35,3 +35,7 @@ Cabeçalhos HTTP (cache e segurança) ficam em `apps/web/public/_headers`.
 - `/links/` — página de links para a bio do Instagram (`apps/web/links/index.html`, `src/pages/LinksPage.jsx`).
 
 O card de compartilhamento (`public/images/og-card.jpg`) é gerado a partir de `apps/web/tools/og-card.html`.
+
+## Materiais
+
+- `/plano-de-crise.pdf` — plano de crise para pacientes (A4, 2 páginas), gerado a partir de `apps/web/tools/plano-de-crise.html` com `node apps/web/tools/plano-de-crise.mjs` (requer `playwright`).

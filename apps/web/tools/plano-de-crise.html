@@ -1,0 +1,362 @@
+<!doctype html>
+<!-- Plano de crise (A4, 2 páginas) com a identidade visual do site.
+     Para regerar o PDF: node apps/web/tools/plano-de-crise.mjs
+     (gera public/plano-de-crise.pdf). -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Plano de Crise | Dr. Diego Zubieta</title>
+<style>
+  @font-face { font-family: 'Source Serif'; font-style: normal; src: url('../../../node_modules/@fontsource-variable/source-serif-4/files/source-serif-4-latin-opsz-normal.woff2') format('woff2'); font-weight: 200 900; }
+  @font-face { font-family: 'Source Serif'; font-style: italic; src: url('../../../node_modules/@fontsource-variable/source-serif-4/files/source-serif-4-latin-opsz-italic.woff2') format('woff2'); font-weight: 200 900; }
+  @font-face { font-family: 'Figtree'; src: url('../../../node_modules/@fontsource-variable/figtree/files/figtree-latin-wght-normal.woff2') format('woff2'); font-weight: 300 900; }
+  @font-face { font-family: 'Figtree'; font-style: italic; src: url('../../../node_modules/@fontsource-variable/figtree/files/figtree-latin-wght-italic.woff2') format('woff2'); font-weight: 300 900; }
+
+  :root {
+    --ink: #0c2138; --ink-950: #071526;
+    --blue: #006a99; --blue-300: #4db6d8; --blue-200: #80cbe2;
+    --sand-50: #fbf8f4; --sand-100: #f5efe7; --sand-200: #ece2d5;
+    --sky-50: #f2f8fb; --sky-100: #e3eff5; --sky-200: #cfe3ee; --sky-300: #b5d4e5;
+    --muted: #475569; --line: rgba(12,33,56,.14);
+  }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font: 400 9.6pt/1.42 'Figtree', sans-serif; color: var(--ink); background: #ddd; }
+  .page { width: 210mm; height: 297mm; background: var(--sand-50); position: relative; overflow: hidden;
+    display: flex; flex-direction: column; margin: 0 auto 10mm; page-break-after: always; }
+  .page:last-child { margin-bottom: 0; page-break-after: auto; }
+  @media print { body { background: none; } .page { margin: 0; } }
+  .pad { padding: 0 13mm; }
+
+  .serif { font-family: 'Source Serif', serif; }
+  h1, h2, h3 { font-family: 'Source Serif', serif; font-weight: 500; letter-spacing: -.015em; }
+  em.accent { font-family: 'Source Serif', serif; font-style: italic; font-weight: 400; color: var(--blue); }
+  .eyebrow { display: flex; align-items: center; gap: 9px; font-size: 7pt; font-weight: 600; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--blue); }
+  .eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--blue); }
+  .muted { color: var(--muted); }
+  sup { font-size: .62em; line-height: 0; color: var(--blue); font-weight: 600; }
+
+  /* Cabeçalho */
+  .top { display: flex; justify-content: space-between; align-items: flex-start; padding-top: 10mm; }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand svg { width: 30px; height: 30px; fill: var(--ink); }
+  .brand b { display: block; font: 600 13pt/1.1 'Source Serif', serif; }
+  .brand span { display: block; font-size: 7.6pt; color: var(--muted); margin-top: 2px; }
+  .fields { width: 64mm; display: grid; gap: 7px; padding-top: 2px; }
+  .field { display: flex; align-items: flex-end; gap: 8px; font-size: 7.4pt; color: var(--muted); }
+  .field i { flex: 1; border-bottom: 1px solid var(--line); height: 10px; }
+
+  .intro { margin-top: 6mm; }
+  .intro h1 { font-size: 21pt; line-height: 1.12; margin-top: 3mm; }
+  .intro p { margin-top: 2.2mm; font-size: 8.8pt; color: var(--muted); max-width: 175mm; }
+
+  /* Termômetro */
+  .scale { margin-top: 4mm; }
+  .scale .bands { display: grid; grid-template-columns: 3.5fr 4fr 2.5fr; border-radius: 10px; overflow: hidden; }
+  .band { padding: 2.6mm 3.4mm; font-size: 7.8pt; line-height: 1.35; }
+  .band b { display: block; font-size: 6.6pt; letter-spacing: .16em; font-weight: 600; text-transform: uppercase; margin-bottom: 1mm; }
+  .band.b1 { background: var(--sky-100); } .band.b1 b { color: var(--blue); }
+  .band.b2 { background: var(--sky-300); } .band.b2 b { color: var(--ink); }
+  .band.b3 { background: var(--ink); color: #fff; } .band.b3 b { color: var(--blue-300); }
+  .scale .nums { display: flex; justify-content: space-between; font-size: 6.6pt; color: var(--muted); margin-top: 1.2mm; }
+  .scale .nums span { width: 0; display: flex; justify-content: center; } .scale .nums span:first-child { justify-content: flex-start; } .scale .nums span:last-child { justify-content: flex-end; }
+
+  /* Passos */
+  .steps { margin-top: 3.4mm; display: flex; flex-direction: column; gap: 3.2mm; }
+  .step { display: grid; grid-template-columns: 7.5mm 1fr; column-gap: 3.5mm; }
+  .num { width: 7mm; height: 7mm; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center;
+    font: 600 9pt/1 'Source Serif', serif; }
+  .num.alt { background: var(--blue); }
+  .step h2 { font-size: 11.4pt; line-height: 7mm; display: flex; align-items: baseline; gap: 6px; }
+  .step h2 small { font: 400 7.2pt 'Figtree', sans-serif; color: var(--muted); letter-spacing: 0; }
+  .step .lead { font-size: 8.6pt; color: var(--muted); }
+  .lines { margin-top: 2.2mm; display: grid; gap: 6.2mm; }
+  .lines i { display: block; border-bottom: 1px solid var(--line); }
+
+  .cards { display: grid; gap: 2.2mm; margin-top: 2mm; }
+  .cards.c4 { grid-template-columns: repeat(4, 1fr); }
+  .cards.c2 { grid-template-columns: repeat(2, 1fr); }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 9px; padding: 2.4mm 3mm; font-size: 7.8pt; line-height: 1.38; color: var(--muted); }
+  .card b { display: block; color: var(--ink); font-size: 8.2pt; font-weight: 600; margin-bottom: .6mm; }
+  .card b .l { font: 600 10.5pt/1 'Source Serif', serif; color: var(--blue); margin-right: 3px; }
+  .note { font-size: 6.9pt; font-style: italic; color: var(--muted); margin-top: 1.6mm; }
+
+  .contacts { display: grid; grid-template-columns: 1fr 1fr; column-gap: 9mm; row-gap: 4.6mm; margin-top: 2.6mm; }
+  .contacts .field { font-size: 7.8pt; }
+  .contacts .field span { white-space: nowrap; }
+
+  /* Faixa de emergência */
+  .sos { margin-top: auto; background: var(--ink); color: #fff; display: grid; grid-template-columns: 1.35fr 1fr 1fr 1fr; padding: 6mm 13mm 7mm; gap: 0; }
+  .sos > div { padding: 0 5mm; border-left: 1px solid rgba(255,255,255,.16); }
+  .sos > div:first-child { padding-left: 0; border-left: 0; }
+  .sos h3 { font-size: 12.5pt; line-height: 1.2; }
+  .sos h3 em { font-style: italic; font-weight: 400; color: var(--blue-300); }
+  .sos p { font-size: 7.4pt; line-height: 1.4; color: rgba(255,255,255,.72); margin-top: 1.6mm; }
+  .sos .big { font: 500 21pt/1 'Source Serif', serif; color: var(--blue-300); }
+  .sos .blank { border-bottom: 1px solid rgba(255,255,255,.3); height: 5mm; margin-top: 1mm; }
+
+  /* Página 2 */
+  .p2head { padding-top: 10mm; }
+  .p2head h1 { font-size: 21pt; margin-top: 3mm; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10mm; margin-top: 5mm; }
+  .col { display: flex; flex-direction: column; }
+  .block { padding: 4mm 0; border-top: 1px solid var(--line); }
+  .col .block:first-child { border-top: 0; padding-top: 0; }
+  .block h2 { font-size: 12pt; margin-bottom: 1.6mm; }
+  .block p { font-size: 8.6pt; color: var(--muted); }
+  .block ul { list-style: none; margin-top: 2.4mm; display: grid; gap: 1.8mm; }
+  .block li { position: relative; padding-left: 4.4mm; font-size: 8.6pt; color: var(--muted); }
+  .block li::before { content: ''; position: absolute; left: 0; top: 1.6mm; width: 1.7mm; height: 1.7mm; border-radius: 50%; background: var(--blue-300); }
+  .block li strong { color: var(--ink); font-weight: 600; }
+  .block li.q { font-family: 'Source Serif', serif; font-style: italic; color: var(--ink); font-size: 9.2pt; }
+
+  .wave { margin-top: 3mm; }
+  .wave svg { width: 100%; height: auto; display: block; }
+  .wave .labels { display: flex; justify-content: space-between; font-size: 6.4pt; color: var(--muted); margin-bottom: 1mm; }
+
+  .pc { margin-top: 2.6mm; display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); border-radius: 9px; overflow: hidden; background: #fff; }
+  .pc div { height: 17mm; padding: 2mm 2.6mm; font-size: 7.4pt; font-weight: 600; }
+  .pc div:nth-child(2n) { border-left: 1px solid var(--line); }
+  .pc div:nth-child(n+3) { border-top: 1px solid var(--line); }
+
+  .reasons { background: var(--sky-100); border-radius: 12px; padding: 4.4mm 5mm 5mm; margin: 1mm 0 4mm; }
+  .reasons h2 { font-size: 12.5pt; }
+  .reasons p { font-size: 8.6pt; color: var(--muted); margin-top: 1mm; }
+  .reasons .lines { gap: 6.6mm; margin-top: 5mm; }
+  .reasons .lines i { border-color: rgba(12,33,56,.18); }
+
+  .refs { margin-top: 2mm; padding-top: 4mm; border-top: 1px solid var(--line); }
+  .refs > p { font-size: 8.2pt; color: var(--muted); margin-top: 2mm; }
+  .refs > p strong { color: var(--ink); font-weight: 600; }
+  .refs ol { columns: 2; column-gap: 9mm; margin-top: 2.6mm; padding-left: 4mm; font-size: 6.6pt; line-height: 1.38; color: var(--muted); }
+  .refs li { break-inside: avoid; margin-bottom: 1.1mm; }
+
+  .foot { margin-top: auto; background: var(--ink); color: #fff; display: flex; justify-content: space-between; align-items: center; padding: 5.4mm 13mm; }
+  .foot .brand svg { width: 28px; height: 28px; fill: var(--blue-300); }
+  .foot .brand span { color: rgba(255,255,255,.7); }
+  .foot .legal { text-align: right; font-size: 6.9pt; line-height: 1.5; color: rgba(255,255,255,.72); }
+  .foot .legal b { color: var(--blue-300); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="logo" viewBox="20 18 220 226">
+    <path d="M47.3 179.9C60.4 173.3 78.8 162.6 85.2 157.8C93.0 152.0 101.9 142.8 105.6 136.4C110.1 128.7 116.9 112.2 118.6 104.7C120.7 95.5 121.8 42.8 120.1 36.3C118.1 29.0 111.5 23.0 105.5 23.0C101.2 23.0 86.1 29.8 77.0 35.8C66.9 42.5 54.0 55.0 48.0 63.9C38.8 77.7 29.4 100.8 26.6 117.0C21.9 144.4 25.2 174.3 33.8 181.0C37.2 183.8 40.1 183.5 47.3 179.9Z" />
+    <path d="M223.5 181.8C234.8 176.6 237.5 133.0 228.4 103.0C225.1 92.4 218.4 76.9 213.0 67.9C203.8 52.4 183.3 34.9 164.7 26.7C157.5 23.5 155.0 22.9 151.7 23.3C146.5 24.0 143.1 26.6 140.0 32.1L137.5 36.5L137.5 64.0C137.6 100.5 138.7 106.9 148.9 128.5C154.6 140.5 161.0 148.5 171.5 156.4C180.5 163.3 215.4 183.0 218.7 183.0C219.9 183.0 222.1 182.5 223.5 181.8Z" />
+    <path d="M112.8 237.5C114.8 236.6 117.5 234.9 118.8 233.7C123.6 229.3 124.0 227.2 124.0 208.5C124.0 188.7 123.4 186.6 116.3 179.9C103.0 167.4 93.4 168.2 67.5 183.6C52.1 192.8 50.0 195.0 50.0 202.3C50.0 208.1 51.7 210.1 64.1 219.5C75.7 228.2 80.9 231.0 94.0 235.6C104.7 239.4 107.5 239.7 112.8 237.5Z" />
+    <path d="M163.7 235.9C168.5 234.2 175.9 231.0 180.0 228.9C189.4 224.0 204.9 212.0 207.3 207.7C209.5 203.8 209.0 197.9 206.2 194.1C203.6 190.6 178.5 175.7 170.8 173.1C162.8 170.4 157.7 170.5 151.4 173.4C144.5 176.6 139.6 181.2 136.6 187.2C134.1 192.1 134.0 193.2 134.0 208.4C134.0 226.4 135.2 230.9 140.8 234.8C147.9 239.9 151.8 240.1 163.7 235.9Z" />
+  </symbol>
+</svg>
+
+<!-- Página 1 -->
+<section class="page">
+  <div class="pad">
+    <div class="top">
+      <div class="brand">
+        <svg><use href="#logo" /></svg>
+        <div><b>Dr. Diego Zubieta</b><span>Médico · CRM/SP 246.697</span></div>
+      </div>
+      <div class="fields">
+        <div class="field"><span>Plano de</span><i></i></div>
+        <div class="field"><span>Data</span><i></i></div>
+      </div>
+    </div>
+
+    <div class="intro">
+      <div class="eyebrow">Plano pessoal · baseado em DBT</div>
+      <h1>Quando a dor ficar <em class="accent">grande demais</em>,<br>siga este plano, um passo de cada vez.</h1>
+      <p>Emoções intensas sobem como uma onda e também descem. O objetivo aqui não é resolver tudo agora, é atravessar os próximos minutos sem fazer nada que piore a situação. Preencha com calma, num momento tranquilo, e deixe à mão.</p>
+    </div>
+
+    <div class="scale">
+      <div class="bands">
+        <div class="band b1"><b>0–3 · Desconforto</b>Use as habilidades do dia a dia: rotina, sono, movimento, conversar.</div>
+        <div class="band b2"><b>4–7 · Aflição alta</b>Comece pelo passo 1 e vá descendo. Habilidades de distração e autoacalmar.</div>
+        <div class="band b3"><b>8–10 · Crise</b>Corpo primeiro (TIP), ambiente seguro e busque alguém agora.</div>
+      </div>
+      <div class="nums"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <div>
+          <h2>Reconheça os sinais <small>gatilhos, pensamentos, sensações no corpo</small></h2>
+          <p class="lead">Perceber cedo dá mais escolhas. O que costuma vir antes da crise?</p>
+          <div class="lines"><i></i><i></i></div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num">2</div>
+        <div>
+          <h2>STOP: não aja no impulso</h2>
+          <div class="cards c4">
+            <div class="card"><b><span class="l">S</span>Pare</b>Congele. Não reaja, não responda, não decida nada.</div>
+            <div class="card"><b><span class="l">T</span>Afaste-se</b>Dê um passo para trás. Saia do lugar, respire.</div>
+            <div class="card"><b><span class="l">O</span>Observe</b>O que está acontecendo dentro e fora de mim?</div>
+            <div class="card"><b><span class="l">P</span>Prossiga</b>Com atenção: o que me ajuda de verdade agora?</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num alt">3</div>
+        <div>
+          <h2>TIP: acalme o corpo para a mente acompanhar <small>para aflição 8 a 10</small></h2>
+          <div class="cards c2">
+            <div class="card"><b><span class="l">T</span>Temperatura</b>Água bem fria no rosto (ou bolsa de gelo nos olhos e bochechas) por 15–30 s, prendendo o ar. Ativa o reflexo de mergulho e desacelera o coração.</div>
+            <div class="card"><b><span class="l">I</span>Exercício intenso</b>10–20 min: correr, subir escadas, polichinelos. Gasta a energia que a emoção acumulou no corpo.</div>
+            <div class="card"><b><span class="l">P</span>Respiração ritmada</b>Inspire em 4, segure em 4, solte o ar em 6, por 3 a 5 min. A expiração mais longa reduz o estresse.<sup>4,5</sup></div>
+            <div class="card"><b><span class="l">P</span>Relaxamento pareado</b>Ao inspirar, contraia um grupo muscular por 5 s; ao soltar o ar, relaxe e diga “solta”. Rosto, ombros, mãos, pernas.</div>
+          </div>
+          <p class="note">Água fria não é indicada para quem tem doença cardíaca, arritmia, pressão baixa ou transtorno alimentar sem orientação médica.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num">4</div>
+        <div>
+          <h2>Distraia-se e acalme os 5 sentidos</h2>
+          <p class="lead">O que funciona para mim? (ex.: banho, música, cheiro de café, mascar gelo, jogo, sair para caminhar, segurar algo macio)</p>
+          <div class="lines"><i></i><i></i></div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num">5</div>
+        <div>
+          <h2>Fale com alguém <small>pessoas e lugares que me ajudam</small></h2>
+          <div class="contacts">
+            <div class="field"><span>Nome / telefone</span><i></i></div>
+            <div class="field"><span>Nome / telefone</span><i></i></div>
+            <div class="field"><span>Lugar seguro</span><i></i></div>
+            <div class="field"><span>Profissional</span><i></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sos">
+    <div>
+      <h3>Se houver risco à vida,<br><em>não espere.</em></h3>
+      <p>Vá ao pronto-socorro mais próximo ou ligue agora. Consulta agendada e telemedicina não são serviço de urgência.</p>
+    </div>
+    <div><div class="big">188</div><p>CVV · apoio emocional 24h, gratuito · cvv.org.br</p></div>
+    <div><div class="big">192</div><p>SAMU · emergência médica</p></div>
+    <div><div class="big">UPA</div><p>ou pronto-socorro mais perto:</p><div class="blank"></div></div>
+  </div>
+</section>
+
+<!-- Página 2 -->
+<section class="page">
+  <div class="pad">
+    <div class="p2head">
+      <div class="eyebrow">Passo 6 em diante</div>
+      <h1>Atravessar a onda <em class="accent">sem piorar</em> a situação.</h1>
+    </div>
+
+    <div class="grid2">
+      <div class="col">
+        <div class="block">
+          <h2>Deixe o ambiente seguro</h2>
+          <p>Afastar o acesso a meios de se machucar é uma das medidas mais eficazes na crise.<sup>6</sup> Ela ganha tempo, e o tempo faz a onda baixar.</p>
+          <ul>
+            <li>Peça a alguém de confiança para <strong>guardar remédios</strong> e deixar só o da semana.</li>
+            <li>Tire de perto objetos cortantes, álcool e outras substâncias.</li>
+            <li>Vá para um lugar com outras pessoas.</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <h2>Surfe a urgência</h2>
+          <p>Impulsos atingem um pico e passam, mesmo sem você agir. Observe a vontade como uma onda: nomeie (“estou sentindo vontade de…”), note onde ela fica no corpo e respire até ela descer.</p>
+          <div class="wave">
+            <div class="labels"><span>impulso começa</span><span>e passa · ~20–30 min</span></div>
+            <svg viewBox="0 0 300 60" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="wg" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#4db6d8" stop-opacity=".35" />
+                  <stop offset="1" stop-color="#4db6d8" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+              <path d="M0 56 C 60 56, 90 10, 150 10 S 240 56, 300 56 Z" fill="url(#wg)" />
+              <path d="M0 56 C 60 56, 90 10, 150 10 S 240 56, 300 56" fill="none" stroke="#006a99" stroke-width="1.6" />
+              <line x1="0" y1="56.5" x2="300" y2="56.5" stroke="#0c2138" stroke-opacity=".25" stroke-width="1" />
+              <text x="150" y="26" text-anchor="middle" font-family="Figtree" font-size="7.5" font-weight="600" fill="#0c2138">pico</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="block">
+          <h2>Prós e contras</h2>
+          <p>Antes de agir no impulso, pense no que vem depois.</p>
+          <div class="pc">
+            <div>Agir no impulso · prós</div><div>Agir no impulso · contras</div>
+            <div>Resistir · prós</div><div>Resistir · contras</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="block">
+          <h2>Aceitação radical</h2>
+          <p>Brigar com a realidade soma sofrimento à dor. Aceitar não é concordar nem desistir: é reconhecer o que é, para conseguir escolher o próximo passo.</p>
+          <ul>
+            <li class="q">“Isso é o que está acontecendo agora.”</li>
+            <li class="q">“Não posso mudar este momento, mas posso atravessá-lo.”</li>
+            <li class="q">“Já passei por momentos difíceis antes.”</li>
+          </ul>
+        </div>
+
+        <div class="reasons">
+          <h2>Meus motivos para <em class="accent">continuar</em></h2>
+          <p>Pessoas, projetos, lugares, coisas que ainda quero viver.</p>
+          <div class="lines"><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+
+        <div class="block">
+          <h2>Depois que a onda passar</h2>
+          <ul>
+            <li><strong>Cuide do corpo:</strong> coma, beba água, tente dormir. Cansaço, fome e álcool deixam a emoção mais forte.</li>
+            <li><strong>Seja gentil consigo:</strong> ter uma crise não é fracasso; usar o plano já é uma vitória.</li>
+            <li><strong>Anote</strong> o que disparou e o que ajudou, e leve para a próxima consulta.</li>
+            <li><strong>Revise este plano</strong> sempre que algo mudar.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="refs">
+      <div class="eyebrow">Em que este plano se baseia</div>
+      <p>Combina o <strong>plano de segurança</strong> (sinais de alerta, estratégias próprias, contatos, ambiente seguro), associado a cerca de <strong>43% menos</strong> comportamento suicida em meta-análise,<sup>2</sup> com as <strong>habilidades de tolerância ao mal-estar da DBT</strong>.<sup>1</sup> Intervenções focadas em regulação emocional, como a DBT, reduzem tentativas e ideação suicida.<sup>3,7</sup> Ele complementa o tratamento, não o substitui.</p>
+      <ol>
+        <li>Linehan MM. <i>DBT Skills Training Manual</i>. 2ª ed. Guilford Press; 2015.</li>
+        <li>Nuij C, et al. Safety planning-type interventions for suicide prevention: meta-analysis. <i>Br J Psychiatry</i>. 2021;219(2):419-426. doi:10.1192/bjp.2021.50</li>
+        <li>Saccaro LF, et al. Emotion regulation-targeted interventions initiated during hospitalization for suicidal crisis: systematic review and meta-analysis. <i>J Affect Disord</i>. 2026;403:121375. doi:10.1016/j.jad.2026.121375</li>
+        <li>Fincham GW, et al. Effect of breathwork on stress and mental health: a meta-analysis of RCTs. <i>Sci Rep</i>. 2023;13:432. doi:10.1038/s41598-022-27247-y</li>
+        <li>Pilcher JJ, et al. Brief slow-paced breathing improves working memory, mood, and stress. <i>Anxiety Stress Coping</i>. 2025;38(5):528-543. doi:10.1080/10615806.2025.2505897</li>
+        <li>Trott M, et al. Suicide methods and severe mental illness: systematic review and meta-analysis. <i>Acta Psychiatr Scand</i>. 2024;151(4):467-484. doi:10.1111/acps.13759</li>
+        <li>Kothgassner OD, et al. Efficacy of DBT for adolescent self-harm and suicidal ideation: meta-analysis. <i>Psychol Med</i>. 2021;51(7):1057-1067. doi:10.1017/S0033291721001355</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="brand">
+      <svg><use href="#logo" /></svg>
+      <div><b>Dr. Diego Zubieta</b><span>(19) 99141-2825 · drdiegozubieta.com.br</span></div>
+    </div>
+    <div class="legal">
+      Médico · CRM/SP 246.697 · Residente em Psiquiatria (Instituto Bairral), <b>não especialista</b>.<br>
+      Material educativo de apoio ao tratamento. Em emergência: <b>CVV 188 · SAMU 192</b>.
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
