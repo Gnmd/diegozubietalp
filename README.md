@@ -38,4 +38,4 @@ O card de compartilhamento (`public/images/og-card.jpg`) é gerado a partir de `
 
 ## Materiais
 
-- `/plano-de-crise.pdf` — plano de crise para pacientes (A4, 2 páginas), gerado a partir de `apps/web/tools/plano-de-crise.html` com `node apps/web/tools/plano-de-crise.mjs` (requer `playwright`).
+- `apps/web/tools/plano-de-crise.pdf` — plano de crise para pacientes (A4, 2 páginas; não é publicado no site), gerado a partir de `apps/web/tools/plano-de-crise.html` com `node apps/web/tools/plano-de-crise.mjs` (requer `playwright`).
